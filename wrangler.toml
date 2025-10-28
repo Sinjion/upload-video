@@ -1,0 +1,21 @@
+name = "cloudflare-video-uploader"
+compatibility_date = "2023-10-01"
+compatibility_flags = ["nodejs_compat"]
+
+# ⚠️ GANTI INI - Dapatkan dari: wrangler whoami
+account_id = "78f8e174c88be2c4797256c00422888b"
+
+main = "functions/upload.js"
+
+[[r2_buckets]]
+binding = "VIDEO_BUCKET"
+bucket_name = "video-uploads"
+
+[site]
+bucket = "."
+entry-point = "functions"
+
+[vars]
+MAX_FILE_SIZE = "104857600"
+ALLOWED_ORIGINS = "*"
+ADSTERRA_LINK = "https://godlessgirlsmoothly.com/rr290s13?key=999d2721eb4571e392f4a8a4eb2abece"

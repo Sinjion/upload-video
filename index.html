@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloudflare Video Uploader dengan Adsterra</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🚀 Cloudflare Video Uploader</h1>
+            <p class="subtitle">Upload video ke Cloudflare R2 & tampilkan iklan Adsterra</p>
+            <div class="cloudflare-badge">
+                <span>Powered by Cloudflare Workers + R2</span>
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <div class="upload-section">
+                <h2 class="section-title">Upload Video</h2>
+                
+                <div class="upload-area" id="uploadArea">
+                    <div class="upload-icon">📁</div>
+                    <p class="upload-text">Drag & drop file video Anda di sini</p>
+                    <p class="upload-text">atau</p>
+                    <button class="browse-btn">Pilih File</button>
+                    <input type="file" id="fileInput" class="file-input" accept="video/*">
+                </div>
+                
+                <div class="file-info" id="fileInfo">
+                    <p><strong>Nama File:</strong> <span id="fileName">-</span></p>
+                    <p><strong>Ukuran:</strong> <span id="fileSize">-</span></p>
+                    <p><strong>Format:</strong> <span id="fileType">-</span></p>
+                </div>
+                
+                <video id="videoPreview" class="video-preview" controls></video>
+                
+                <button id="uploadBtn" class="upload-btn" disabled>
+                    <span class="btn-text">Upload ke Cloudflare R2</span>
+                    <span class="btn-loading" style="display: none;">🔄 Uploading...</span>
+                </button>
+                
+                <div class="progress-container" id="progressContainer">
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                    <div class="progress-text" id="progressText">0% terupload</div>
+                </div>
+                
+                <div id="statusMessage" class="status-message"></div>
+            </div>
+            
+            <div class="video-section">
+                <h2 class="section-title">Video Player</h2>
+                
+                <div class="video-container">
+                    <video id="videoPlayer" class="video-player" controls></video>
+                    <div class="video-controls">
+                        <button id="playBtn" class="control-btn">▶️ Putar</button>
+                        <button id="pauseBtn" class="control-btn">⏸️ Jeda</button>
+                        <button id="fullscreenBtn" class="control-btn">⛶ Layar Penuh</button>
+                    </div>
+                </div>
+                
+                <div class="video-info" id="videoInfo">
+                    <h3>Informasi Video</h3>
+                    <p><strong>Status:</strong> <span id="videoStatus">Belum ada video</span></p>
+                    <p><strong>URL Video:</strong> <span id="videoUrl">-</span></p>
+                    <p><strong>Durasi:</strong> <span id="videoDuration">-</span></p>
+                </div>
+                
+                <div class="ad-container" id="adContainer">
+                    <div class="ad-header">
+                        <span class="ad-label">Advertisement by Adsterra</span>
+                        <button id="closeAdBtn" class="close-btn">×</button>
+                    </div>
+                    <div class="ad-content" id="adContent">
+                        <div class="ad-placeholder">
+                            <p>Iklan akan muncul di sini setelah video selesai</p>
+                            <p class="tap-info">Tap/klik di mana saja untuk mengunjungi advertiser</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="uploaded-videos" id="uploadedVideos">
+                    <h3>Video yang Sudah Diupload</h3>
+                    <div class="videos-list" id="videosList">
+                        <p class="no-videos">Belum ada video</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="instructions">
+            <h2>🎯 Cara Penggunaan</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Upload Video</h3>
+                        <p>Pilih file video (MP4, WebM, MOV) maksimal 100MB</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Tunggu Upload</h3>
+                        <p>Video langsung diupload ke Cloudflare R2 Storage</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Tonton Video</h3>
+                        <p>Putar video di player yang tersedia</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Lihat Iklan</h3>
+                        <p>Setelah video selesai, iklan Adsterra akan muncul</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Powered by Cloudflare Workers + R2 Storage | Integrated with Adsterra</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
